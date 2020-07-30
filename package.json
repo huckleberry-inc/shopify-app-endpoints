@@ -1,0 +1,51 @@
+{
+  "name": "shopify-app-endpoints",
+  "scripts": {
+    "build": "tsc",
+    "serve": "npm run build && firebase emulators:start --only functions",
+    "shell": "npm run build && firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "test": "jest src/",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "10"
+  },
+  "main": "lib/index.js",
+  "dependencies": {
+    "@slack/web-api": "^5.10.0",
+    "firebase-admin": "^8.13.0",
+    "firebase-functions": "^3.7.0"
+  },
+  "devDependencies": {
+    "@babel/preset-env": "^7.10.2",
+    "@babel/preset-typescript": "^7.10.1",
+    "@firebase/testing": "^0.20.0",
+    "@huckleberry-inc/eslint-config": "^0.0.13",
+    "@huckleberry-inc/prettier-config": "^0.0.6",
+    "@types/babel__preset-env": "^7.9.0",
+    "firebase-functions-test": "^0.1.6",
+    "typescript": "^3.2.2"
+  },
+  "private": true,
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "src/**/*.{js,jsx,ts,tsx}": [
+      "eslint --fix",
+      "git add"
+    ],
+    "src/**/*.{css,jsx,tsx}": [
+      "stylelint --fix",
+      "git add"
+    ],
+    "functions/src/**/*.{js,ts}": [
+      "cd functions/ && eslint --fix",
+      "git add"
+    ]
+  }
+}

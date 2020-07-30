@@ -1,0 +1,9 @@
+{
+  "slack": {
+    "channel": "",
+    "token": ""
+  },
+  "shopify": {
+    "shared_secrets": {}
+  }
+}
