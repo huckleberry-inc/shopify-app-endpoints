@@ -24,13 +24,11 @@
     "@firebase/testing": "^0.20.11",
     "@huckleberry-inc/eslint-config": "^0.0.13",
     "@huckleberry-inc/prettier-config": "^0.0.6",
-    "@slack-wrench/jest-mock-web-client": "^1.2.0",
     "@types/babel__preset-env": "^7.9.0",
     "@types/jest": "^26.0.9",
     "firebase-functions-test": "^0.2.1",
     "jest": "^26.4.0",
     "sepia": "^2.0.2",
-    "sinon": "^9.0.3",
     "typescript": "^3.9.7"
   },
   "private": true,
