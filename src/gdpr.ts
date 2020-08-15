@@ -4,35 +4,36 @@ import { WebClient } from '@slack/web-api';
 
 export const gdpr = ({
   identifier,
-  slack,
+  notify,
 }: {
   identifier: string;
-  slack?: boolean;
+  notify?: boolean;
 }): functions.HttpsFunction =>
   functions
     .region('asia-northeast1')
     .runWith({ memory: '2GB' })
     .https.onRequest(async (request, response) => {
-      const hmac = request.get('X-Shopify-Hmac-Sha256');
-
       const { app } = request.query;
       const sharedSecret = functions.config().shopify.shared_secrets[
         app as string
       ];
 
+      console.log(request.body);
+
       if (!sharedSecret) {
-        throw new functions.https.HttpsError('invalid-argument', 'Not found');
+        response.sendStatus(500);
+        return;
       }
 
       const hash = createHmac('sha256', sharedSecret)
         .update(request.rawBody)
         .digest('base64');
 
+      const hmac = request.get('X-Shopify-Hmac-Sha256');
+
       if (hash !== hmac) {
-        throw new functions.https.HttpsError(
-          'invalid-argument',
-          'Hmac is invalid',
-        );
+        response.sendStatus(400);
+        return;
       }
 
       const { shop_domain } = request.body;
@@ -40,7 +41,7 @@ export const gdpr = ({
 
       console.log(message);
 
-      if (slack) {
+      if (notify) {
         const web = new WebClient(functions.config().slack.token);
         await web.chat.postMessage({
           channel: functions.config().slack.channel,
@@ -48,5 +49,5 @@ export const gdpr = ({
         });
       }
 
-      return response.status(200).send();
+      response.sendStatus(200);
     });

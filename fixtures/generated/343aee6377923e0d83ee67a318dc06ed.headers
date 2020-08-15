@@ -1,0 +1,31 @@
+{
+  "statusCode": 200,
+  "headers": {
+    "date": "Sat, 15 Aug 2020 08:19:06 GMT",
+    "server": "Apache",
+    "strict-transport-security": "max-age=31536000; includeSubDomains; preload",
+    "access-control-allow-headers": "slack-route, x-slack-version-ts, x-b3-traceid, x-b3-spanid, x-b3-parentspanid, x-b3-sampled, x-b3-flags",
+    "referrer-policy": "no-referrer",
+    "x-slack-backend": "r",
+    "access-control-expose-headers": "x-slack-req-id, retry-after",
+    "vary": "Accept-Encoding",
+    "x-content-type-options": "nosniff",
+    "x-slack-req-id": "0cdcac4f3739ba11dcfc86afbbf02f94",
+    "x-xss-protection": "0",
+    "access-control-allow-origin": "*",
+    "transfer-encoding": "chunked",
+    "content-type": "application/json; charset=utf-8",
+    "x-via": "haproxy-www-txkb,haproxy-edge-nrt-6f09"
+  },
+  "url": "https://slack.com/api/chat.postMessage",
+  "time": 450,
+  "request": {
+    "method": "POST",
+    "headers": {
+      "Accept": "application/json, text/plain, */*",
+      "User-Agent": "@slack:web-api/5.11.0 node/10.20.1 darwin/19.6.0",
+      "Content-Type": "application/x-www-form-urlencoded",
+      "Content-Length": 82
+    }
+  }
+}
