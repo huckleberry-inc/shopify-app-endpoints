@@ -22,7 +22,6 @@
     "@babel/preset-env": "^7.11.0",
     "@babel/preset-typescript": "^7.10.4",
     "@firebase/testing": "^0.20.11",
-    "@huckleberry-inc/eslint-config": "^0.0.13",
     "@huckleberry-inc/prettier-config": "^0.0.6",
     "@types/babel__preset-env": "^7.9.0",
     "@types/jest": "^26.0.9",
@@ -34,24 +33,5 @@
   "private": true,
   "jest": {
     "testEnvironment": "node"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
-  "lint-staged": {
-    "src/**/*.{js,jsx,ts,tsx}": [
-      "eslint --fix",
-      "git add"
-    ],
-    "src/**/*.{css,jsx,tsx}": [
-      "stylelint --fix",
-      "git add"
-    ],
-    "functions/src/**/*.{js,ts}": [
-      "cd functions/ && eslint --fix",
-      "git add"
-    ]
   }
 }
