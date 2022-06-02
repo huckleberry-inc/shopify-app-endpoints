@@ -32,7 +32,7 @@ export const gdpr = ({
       const hmac = request.get('X-Shopify-Hmac-Sha256');
 
       if (hash !== hmac) {
-        response.sendStatus(400);
+        response.sendStatus(401);
         return;
       }
 
